@@ -7,7 +7,7 @@ function useSetState(initialState = {}) {
   // :(
   useEffect(() => {
     if (userCallBack) userCallBack();
-  }, [state]);
+  }, [state, userCallBack]);
 
   const setPartialState = (newState, cb) => {
     let correctedState = { ...state };
