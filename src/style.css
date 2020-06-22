@@ -14,28 +14,15 @@ body {
 
 .container {
   display: flex;
+  flex-direction: column;
+}
+
+.container div {
+  display: flex;
+  padding: 10px;
 }
 
 .container button {
   margin-left: 10px;
   padding: 2px 8px;
-}
-
-.left,
-.right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 50px;
-  flex-direction: column;
-}
-.left div {
-  display: flex;
-  margin-top: 3px;
-}
-.right {
-  border-left: 3px solid black;
-}
-.right .test {
-  margin-top: 10px;
 }

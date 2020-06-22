@@ -11,7 +11,10 @@ const App = () => {
   return (
     <div className="container">
       <div>
-        <h3>{JSON.stringify(clicks, null, 1)}</h3>
+        <h3>answer: {JSON.stringify(clicks, null, 1)}</h3>
+      </div>
+      <div>
+        <h3>test: {'{ "value": clicks.value + 1 }'}</h3>
         <button
           onClick={() => {
             setClicks({ value: clicks.value + 1 }, myCallBack);
@@ -31,6 +34,7 @@ const App = () => {
           click
         </button>
       </div>
+
       <div>
         <h3>test: [1, 2, 3]</h3>
         <button
