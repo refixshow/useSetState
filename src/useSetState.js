@@ -1,24 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function useSetState(initialState = {}) {
   const [state, updateState] = useState(initialState);
-  const [userCallBack, setUserCallBack] = useState();
+  const ref = useRef();
 
-  // :(
+  // :((((((
   useEffect(() => {
-    if (userCallBack) userCallBack();
-  }, [state, userCallBack]);
+    if (ref.current && state) ref.current();
+  }, [state]);
 
   const setPartialState = (newState, cb) => {
     let correctedState = { ...state };
     let tempNewState = newState;
 
-    if (typeof newState === "function") {
-      tempNewState = newState();
+    if (typeof tempNewState === "function") {
+      tempNewState = tempNewState();
     }
 
     if (typeof tempNewState === "object") {
-      if (cb) setUserCallBack(cb);
+      if (cb) ref.current = cb;
 
       Object.keys(tempNewState).forEach((el) => {
         if (typeof correctedState[el] !== "undefined") {
