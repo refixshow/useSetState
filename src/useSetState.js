@@ -2,17 +2,13 @@ import { useState, useEffect, useRef } from "react";
 
 function useSetState(initialState = {}) {
   const [state, updateState] = useState(initialState);
-  const [prevState, setPrevState] = useState(null);
   const ref = useRef();
 
-  // :((((((
   useEffect(() => {
-    if (ref.current && JSON.stringify(prevState) !== JSON.stringify(state))
-      ref.current();
-  }, [state, prevState]);
+    if (ref.current) ref.current();
+  }, [state]);
 
   const setPartialState = (newState, cb) => {
-    setPrevState(state);
     let correctedState = { ...state };
     let tempNewState = newState;
 
